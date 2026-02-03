@@ -12,34 +12,57 @@ int main()
 	
 	// creazion della matrice	
 	const int d = rand() % 4 + 4;
-	char m[d] [d];
-	// array per non sovrascrivere
-	int controllo[d] [d]={};
+	cout << d << endl;       /***********************/
+	char m[d] [d]={};
+	
+	for( int i = 0; i < d; i++)
+	{
+		for(int s = 0; s < d; s++)
+		{
+			cout << m [i] [s] << " ";
+		}
+		cout << endl;	
+	}
+
 	
 	//riempimento della matrice
 	for( int i = 0; i < d; i++)
 	{
-		char a = rand() % 26 + 65;
-		for(int s=0; s < 2; s++)
+		char a = rand() % 26 + 65;		
+		cout << a << endl;    /***********************/
+
+		//genero le coppie
+		for(int s = 0; s < 2; s++)
 		{	
-			if( controllo[y] [k] = 1 )
+			int y = rand() % d;
+			int x = rand() % d;
+			
+			//controllo se la casella e' libera
+			if( m[y] [x] != 0 )
 			{
 				s--;
 				break;	
 			}
-			
-				
-			int y = rand() % d;
-			int k = rand() % d;
-			m[y] [k] = a;
-			controllo[y] [k] = 1;
-				
+
+			m[y] [x] = a;				
 		}		
+	}
+	cout << "ok\n"; /****************************/
+	
+	//stampa
+	for( int i = 0; i < d; i++)
+	{
+		for(int s = 0; s < d; s++)
+		{
+			cout << m [i] [s] << " ";
+		}
+		cout << endl;	
 	}
 	
 	
 	
 	
     return 0;
-}	
+}
+
 
