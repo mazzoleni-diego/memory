@@ -26,29 +26,58 @@ int main()
 
 	
 	//riempimento della matrice
-	for( int i = 0; i < d; i++)
+	int controllo[26]={};
+	for( int i = 0; i < d*d/2; i++)
 	{
-		char a = rand() % 26 + 65;		
-		cout << a << endl;    /***********************/
-
-		//genero le coppie
-		for(int s = 0; s < 2; s++)
-		{	
-			int y = rand() % d;
-			int x = rand() % d;
+		char a = rand() % 26 + 65;
 			
-			//controllo se la casella e' libera
-			if( m[y] [x] != 0 )
-			{
-				s--;
-				break;	
-			}
-
-			m[y] [x] = a;				
-		}		
+		//controllo per generare lettere diverse
+		int z = a - 64;
+		cout << z;	
+		cout << a << endl;   
+		if(controllo[z] == 1)
+		{
+			i--;
+			continue;
+		}
+		else
+		{
+				
+			//genero le posizioni delle coppie
+			for(int s = 0; s < 2; s++)
+			{	
+				int y = rand() % d;
+				int x = rand() % d;
+				
+				//controllo se la casella e' libera
+				if( m[y] [x] == 0 )
+				{
+					m[y] [x] = a;
+				}
+				else
+				{
+					s--;
+					continue;
+				}						
+			}		
+		}
+		controllo[z] = 1;
 	}
-	cout << "ok\n"; /****************************/
+
+	for( int i = 0; i < d; i++)
+		{
+			int s = 0;
+			for(; s < d; s++)
+			{
+				if( m [i] [s] == 0 )
+				{
+					m [i] [s] = 35;
+				}	
+			}
+				
+		}
 	
+
 	//stampa
 	for( int i = 0; i < d; i++)
 	{
@@ -58,11 +87,9 @@ int main()
 		}
 		cout << endl;	
 	}
-	
-	
-	
-	
+		
     return 0;
 }
+
 
 
